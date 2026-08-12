@@ -1,0 +1,59 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+
+  "default_agent": "engineering-manager",
+
+  "agent": {
+    "engineering-manager": {
+      "description": "Orchestrates the engineering workflow from goal to reviewed implementation.",
+      "mode": "primary",
+      "model": "opencode/qwen3.7-max",
+      "prompt": "{file:./agents/engineering-manager.md}"
+    },
+
+    "problem-structurer": {
+      "description": "Turns an ambiguous request into a precise engineering problem.",
+      "mode": "subagent",
+      "model": "opencode/glm-5.2",
+      "prompt": "{file:./agents/problem-structurer.md}"
+    },
+
+    "feasibility-researcher": {
+      "description": "Evaluates technical feasibility, alternatives, constraints, dependencies and risks.",
+      "mode": "subagent",
+      "model": "opencode/qwen3.7-max",
+      "prompt": "{file:./agents/feasibility-researcher.md}"
+    },
+
+    "roadmap-planner": {
+      "description": "Creates an implementation roadmap for a validated goal.",
+      "mode": "subagent",
+      "model": "opencode/qwen3.7-max",
+      "prompt": "{file:./agents/roadmap-planner.md}"
+    },
+
+    "milestone-planner": {
+      "description": "Breaks a roadmap into independently executable milestones and tasks.",
+      "mode": "subagent",
+      "model": "opencode/glm-5.2",
+      "prompt": "{file:./agents/milestone-planner.md}"
+    },
+
+    "builder": {
+      "description": "Implements planned tasks and creates project scaffolding.",
+      "mode": "subagent",
+      "model": "opencode/deepseek-v4-flash",
+      "prompt": "{file:./agents/builder.md}"
+    },
+
+    "code-reviewer": {
+      "description": "Performs an independent, read-only review of implementation quality.",
+      "mode": "subagent",
+      "model": "opencode/kimi-k2.7-code",
+      "prompt": "{file:./agents/code-reviewer.md}",
+      "permission": {
+        "edit": "deny"
+      }
+    }
+  }
+}
