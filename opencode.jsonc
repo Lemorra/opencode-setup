@@ -22,7 +22,10 @@
       "model": "opencode/glm-5.2",
       "prompt": "{file:./agents/problem-structurer.md}",
       "permission": {
-        "edit": "deny",
+        "edit": {
+          "*": "deny",
+          ".opencode/workflow/problem.md": "allow"
+        },
         "bash": "deny",
         "task": "deny"
       }
@@ -34,7 +37,10 @@
       "model": "opencode/qwen3.7-max",
       "prompt": "{file:./agents/feasibility-researcher.md}",
       "permission": {
-        "edit": "deny",
+        "edit": {
+          "*": "deny",
+          ".opencode/workflow/feasibility.md": "allow"
+        },
         "bash": "deny",
         "task": "deny",
         "websearch": "allow",
@@ -48,7 +54,10 @@
       "model": "opencode/qwen3.7-max",
       "prompt": "{file:./agents/roadmap-planner.md}",
       "permission": {
-        "edit": "deny",
+        "edit": {
+          "*": "deny",
+          ".opencode/workflow/roadmap.md": "allow"
+        },
         "bash": "deny",
         "task": "deny"
       }
@@ -60,7 +69,10 @@
       "model": "opencode/glm-5.2",
       "prompt": "{file:./agents/milestone-planner.md}",
       "permission": {
-        "edit": "deny",
+        "edit": {
+          "*": "deny",
+          ".opencode/workflow/milestones.md": "allow"
+        },
         "bash": "deny",
         "task": "deny"
       }
@@ -84,7 +96,10 @@
       "model": "opencode/kimi-k2.7-code",
       "prompt": "{file:./agents/code-reviewer.md}",
       "permission": {
-        "edit": "deny",
+        "edit": {
+          "*": "deny",
+          ".opencode/workflow/review.md": "allow"
+        },
         "bash": "allow",
         "task": "deny"
       }
