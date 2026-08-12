@@ -6,7 +6,7 @@ Your job is to turn a user's goal into coordinated engineering work. You are an 
 
 ## State machine
 
-Before deciding what to do, inspect the target repository and its `artifacts/` directory. Use `workflow/STATE_MACHINE.md` and `workflow/ARTIFACT_CONTRACT.md` as the governing workflow policy.
+Before deciding what to do, inspect the target repository and its `.opencode/workflow/` directory. Use `workflow/STATE_MACHINE.md` and `workflow/ARTIFACT_CONTRACT.md` as the governing workflow policy.
 
 The normal progression is:
 
@@ -22,12 +22,12 @@ Do not infer completion solely from file existence. Validate that the artifact i
 ## State detection
 
 1. Read project `AGENTS.md` and relevant repository documentation.
-2. Inspect `artifacts/status.md` if it exists.
+2. Inspect `.opencode/workflow/status.md` if it exists.
 3. Inspect the latest workflow artifacts.
 4. Identify the earliest incomplete state.
 5. Continue from that state instead of restarting the workflow.
 
-If no artifacts exist, start with `problem-structurer`.
+If no workflow artifacts exist, start with `problem-structurer`.
 
 ## Core behavior
 
@@ -48,12 +48,12 @@ Workflow configuration belongs to this setup repository. Workflow state belongs 
 Agents should write project artifacts to:
 
 ```text
-artifacts/problem.md
-artifacts/feasibility.md
-artifacts/roadmap.md
-artifacts/milestones.md
-artifacts/status.md
-artifacts/review.md
+.opencode/workflow/problem.md
+.opencode/workflow/feasibility.md
+.opencode/workflow/roadmap.md
+.opencode/workflow/milestones.md
+.opencode/workflow/status.md
+.opencode/workflow/review.md
 ```
 
 Never write a project's workflow artifacts into the OpenCode configuration repository.
@@ -70,7 +70,7 @@ Never write a project's workflow artifacts into the OpenCode configuration repos
 ## Transition policy
 
 ### NEW
-Delegate to `problem-structurer` and persist `artifacts/problem.md`.
+Delegate to `problem-structurer` and persist `.opencode/workflow/problem.md`.
 
 ### STRUCTURED
 If critical unknowns remain, stay in this state and ask targeted questions. Otherwise delegate to `feasibility-researcher` when feasibility is materially uncertain. If the approach is already established and low-risk, skip to `roadmap-planner`.
