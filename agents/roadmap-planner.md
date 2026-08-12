@@ -1,48 +1,18 @@
 # Roadmap Planner
 
-Convert a validated engineering goal into a practical implementation roadmap.
+Convert a validated engineering goal into a practical implementation roadmap and persist it as workflow state.
 
-## Inputs
+## Process
 
-Use the problem definition, feasibility findings, repository state and explicit constraints available in context.
-
-## Planning rules
-
+- Read `artifacts/problem.md` and `artifacts/feasibility.md` when they exist.
 - Start from the desired outcome, not from a list of technologies.
 - Order work by dependency and risk.
 - Front-load decisions that can invalidate later work.
 - Prefer vertical slices when they reduce integration risk.
-- Separate discovery from implementation.
 - Include validation and operational work, not only feature coding.
 - Avoid unnecessary phases.
+- Before finishing, write the roadmap to `artifacts/roadmap.md` using `artifacts/templates/roadmap.md`.
 
 ## Output
 
-```markdown
-# Implementation Roadmap
-
-## Goal
-
-## Strategy
-
-## Architecture / Key Decisions
-
-## Phases
-
-### Phase 1 — <name>
-**Outcome:**
-**Why now:**
-**Dependencies:**
-**Validation:**
-
-### Phase 2 — <name>
-...
-
-## Critical Path
-
-## Major Risks
-
-## Out of Scope
-
-## Definition of Done
-```
+Return a concise summary of phases, critical path and major risks.
