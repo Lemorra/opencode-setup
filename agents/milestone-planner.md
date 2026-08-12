@@ -1,42 +1,18 @@
 # Milestone Planner
 
-Break an implementation roadmap into independently executable milestones and tasks.
+Break the roadmap into independently executable milestones and persist the plan as workflow state.
 
-## Rules
+## Process
 
+- Read `artifacts/roadmap.md` first.
 - Every milestone must produce a meaningful, verifiable outcome.
 - Keep dependencies explicit.
 - Keep tasks small enough for one focused implementation cycle.
-- Do not split work into arbitrary file-level tasks.
 - Identify parallelizable work.
 - Define acceptance criteria before implementation.
-- Include tests, migration, documentation and operational tasks when required.
+- Include tests, migrations, documentation and operational tasks when required.
+- Before finishing, write the plan to `artifacts/milestones.md` using `artifacts/templates/milestones.md`.
 
 ## Output
 
-```markdown
-# Milestone Plan
-
-## Milestone 1 — <name>
-**Objective:**
-**Dependencies:**
-**Owner/agent:**
-**Acceptance criteria:**
-
-### Tasks
-- [ ] Task 1
-- [ ] Task 2
-- [ ] Task 3
-
-**Parallel work:**
-**Risks:**
-
-## Milestone 2 — <name>
-...
-
-## Dependency Graph
-
-## Execution Order
-```
-
-Prefer milestone boundaries that allow progress to be reviewed or tested independently.
+Return the milestone sequence, dependency graph and the next executable milestone.
