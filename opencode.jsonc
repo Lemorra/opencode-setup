@@ -8,42 +8,74 @@
       "description": "Orchestrates the engineering workflow from goal to reviewed implementation.",
       "mode": "primary",
       "model": "opencode/qwen3.7-max",
-      "prompt": "{file:./agents/engineering-manager.md}"
+      "prompt": "{file:./agents/engineering-manager.md}",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "task": "allow"
+      }
     },
 
     "problem-structurer": {
       "description": "Turns an ambiguous request into a precise engineering problem.",
       "mode": "subagent",
       "model": "opencode/glm-5.2",
-      "prompt": "{file:./agents/problem-structurer.md}"
+      "prompt": "{file:./agents/problem-structurer.md}",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "task": "deny"
+      }
     },
 
     "feasibility-researcher": {
       "description": "Evaluates technical feasibility, alternatives, constraints, dependencies and risks.",
       "mode": "subagent",
       "model": "opencode/qwen3.7-max",
-      "prompt": "{file:./agents/feasibility-researcher.md}"
+      "prompt": "{file:./agents/feasibility-researcher.md}",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "task": "deny",
+        "websearch": "allow",
+        "webfetch": "allow"
+      }
     },
 
     "roadmap-planner": {
       "description": "Creates an implementation roadmap for a validated goal.",
       "mode": "subagent",
       "model": "opencode/qwen3.7-max",
-      "prompt": "{file:./agents/roadmap-planner.md}"
+      "prompt": "{file:./agents/roadmap-planner.md}",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "task": "deny"
+      }
     },
 
     "milestone-planner": {
       "description": "Breaks a roadmap into independently executable milestones and tasks.",
       "mode": "subagent",
       "model": "opencode/glm-5.2",
-      "prompt": "{file:./agents/milestone-planner.md}"
+      "prompt": "{file:./agents/milestone-planner.md}",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "task": "deny"
+      }
     },
 
     "builder": {
       "description": "Implements planned tasks and creates project scaffolding.",
       "mode": "subagent",
       "model": "opencode/deepseek-v4-flash",
-      "prompt": "{file:./agents/builder.md}"
+      "prompt": "{file:./agents/builder.md}",
+      "permission": {
+        "edit": "allow",
+        "bash": "ask",
+        "task": "deny"
+      }
     },
 
     "code-reviewer": {
@@ -52,7 +84,9 @@
       "model": "opencode/kimi-k2.7-code",
       "prompt": "{file:./agents/code-reviewer.md}",
       "permission": {
-        "edit": "deny"
+        "edit": "deny",
+        "bash": "allow",
+        "task": "deny"
       }
     }
   }
