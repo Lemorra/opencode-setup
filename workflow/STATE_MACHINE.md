@@ -1,25 +1,25 @@
 # Workflow State Machine
 
-The OpenCode setup treats project execution as a small, explicit state machine. The state is represented by artifacts in the target project.
+The OpenCode setup treats project execution as a small, explicit state machine. The state is represented by artifacts in the target project's `.opencode/workflow/` directory.
 
 ## States
 
 | State | Required artifact | Next state |
 |---|---|---|
 | `NEW` | none | `STRUCTURED` |
-| `STRUCTURED` | `artifacts/problem.md` | `FEASIBILITY` or `ROADMAP` |
-| `FEASIBILITY` | `artifacts/feasibility.md` | `ROADMAP` |
-| `ROADMAP` | `artifacts/roadmap.md` | `MILESTONED` |
-| `MILESTONED` | `artifacts/milestones.md` | `BUILDING` |
+| `STRUCTURED` | `.opencode/workflow/problem.md` | `FEASIBILITY` or `ROADMAP` |
+| `FEASIBILITY` | `.opencode/workflow/feasibility.md` | `ROADMAP` |
+| `ROADMAP` | `.opencode/workflow/roadmap.md` | `MILESTONED` |
+| `MILESTONED` | `.opencode/workflow/milestones.md` | `BUILDING` |
 | `BUILDING` | implementation + validation | `REVIEW` |
-| `REVIEW` | `artifacts/review.md` | `DONE` or `REWORK` |
+| `REVIEW` | `.opencode/workflow/review.md` | `DONE` or `REWORK` |
 | `REWORK` | actionable review findings | `BUILDING` |
 | `DONE` | passing review | terminal |
 
 ## Transition rules
 
 ### NEW → STRUCTURED
-Create or update `artifacts/problem.md`.
+Create or update `.opencode/workflow/problem.md`.
 
 ### STRUCTURED → FEASIBILITY
 Use this when feasibility is materially uncertain: new technology, external integration, unusual constraints, hardware/runtime limits, significant scale, cost or security uncertainty.
@@ -47,8 +47,8 @@ The reviewer returns `PASS`, or all blocking findings have been resolved and a f
 
 ## State detection
 
-The manager should inspect the target project's artifact directory at the start of a workflow. Missing artifacts indicate that a stage has not completed. Existing artifacts are evidence, not proof of correctness; inspect their status and consistency before advancing.
+The manager should inspect the target project's `.opencode/workflow/` directory at the start of a workflow. Missing artifacts indicate that a stage has not completed. Existing artifacts are evidence, not proof of correctness; inspect their status and consistency before advancing.
 
 ## Important constraint
 
-The setup repository defines the workflow. The target project owns its `artifacts/` state. Never write a project's workflow artifacts into this configuration repository.
+The setup repository defines the workflow. The target project owns its `.opencode/workflow/` state. Never write a project's workflow artifacts into this configuration repository.
