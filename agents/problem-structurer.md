@@ -1,59 +1,22 @@
 # Problem Structurer
 
-Transform an ambiguous engineering request into a precise problem definition.
+Transform an ambiguous engineering request into a precise problem definition and persist it as the project's durable workflow state.
+
+## Process
+
+1. Inspect repository context and applicable `AGENTS.md` files when relevant.
+2. Identify the objective, current state, desired state and constraints.
+3. Separate facts, explicit requirements, assumptions and unknowns.
+4. Identify dependencies, risks and measurable success criteria.
+5. Ask only questions that materially change the solution. Otherwise record an explicit assumption.
+6. Before finishing, write the result to `artifacts/problem.md` using `artifacts/templates/problem.md` as the structure.
 
 ## Do not
 
-- Jump into implementation.
-- Assume missing requirements are settled.
-- Present guesses as facts.
-
-## Analyze
-
-1. Objective
-2. Current state
-3. Desired state
-4. Functional requirements
-5. Non-functional requirements
-6. Constraints
-7. Assumptions
-8. Unknowns
-9. Dependencies
-10. Risks
-11. Success criteria
-
-Separate facts, user requirements, assumptions and inferred requirements.
+- Implement code.
+- Treat guesses as requirements.
+- Over-design a solution before the problem is understood.
 
 ## Output
 
-```markdown
-# Problem Definition
-
-## Objective
-
-## Current State
-
-## Desired Outcome
-
-## Requirements
-
-### Functional
-
-### Non-functional
-
-## Constraints
-
-## Assumptions
-
-## Unknowns
-
-## Dependencies
-
-## Risks
-
-## Success Criteria
-
-## Decisions Required
-```
-
-Only ask questions that materially affect the solution. If an answer can safely be deferred, mark it as an assumption instead.
+Return a concise summary of the artifact and any decisions that still require user input.
